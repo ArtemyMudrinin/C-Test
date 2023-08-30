@@ -22,17 +22,16 @@ namespace WebApplication1
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+
         public void ConfigureServices(IServiceCollection services)
         {
-            //Добавила Самойлова
-            // получаем строку подключения из файла конфигурации
+
             string connection = Configuration.GetConnectionString("DefaultConnection");
-            // добавляем контекст MobileContext в качестве сервиса в приложение
+
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
-            //Конец добавки
+
             services.AddControllers();
-            //Добавка Самойловой
+
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -41,13 +40,13 @@ namespace WebApplication1
                     .AllowAnyHeader());
             });
             services.AddControllersWithViews();
-            // Конец добавки
+
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseCors("CorsPolicy"); //Добавка Самойловой
+            app.UseCors("CorsPolicy");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -55,7 +54,7 @@ namespace WebApplication1
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
@@ -72,7 +71,7 @@ namespace WebApplication1
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
             });
-            //Конец добавки и замены куска кода
+
 
         }
     }

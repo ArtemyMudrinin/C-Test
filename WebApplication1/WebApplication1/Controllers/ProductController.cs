@@ -1,22 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Collections;
-
+using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-
-    public class ProductController : Controller
+    public class ProductController : ControllerBase
     {
         private readonly ApplicationContext _context;
 
@@ -30,6 +22,7 @@ namespace WebApplication1.Controllers
         {
             return _context.Product_Mudrinin.ToList();
         }
+
         [HttpGet("{id}", Name = "GetProduct")]
         public IActionResult GetById(int id)
         {
@@ -53,7 +46,7 @@ namespace WebApplication1.Controllers
             _context.SaveChanges();
             return new NoContentResult();
         }
-
+  
         [HttpPut("{id}")]
         public IActionResult Update(long id, [FromBody] Product item)
         {
@@ -90,79 +83,6 @@ namespace WebApplication1.Controllers
             _context.SaveChanges();
             return new NoContentResult();
         }
-
-
-
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
+

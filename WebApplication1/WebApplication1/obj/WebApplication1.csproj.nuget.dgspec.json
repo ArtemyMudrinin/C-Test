@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\C-Test\\C-Test\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
+    "E:\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
   },
   "projects": {
-    "F:\\C-Test\\C-Test\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
+    "E:\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\C-Test\\C-Test\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectUniqueName": "E:\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "projectName": "WebApplication1",
-        "projectPath": "F:\\C-Test\\C-Test\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectPath": "E:\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "packagesPath": "C:\\Users\\artem\\.nuget\\packages\\",
-        "outputPath": "F:\\C-Test\\C-Test\\WebApplication1\\WebApplication1\\obj\\",
+        "outputPath": "E:\\WebApplication1\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\artem\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,7 +43,7 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[7.0.10, )"
+              "version": "[5.0.5, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

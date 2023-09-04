@@ -1,13 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 
@@ -21,17 +16,11 @@ namespace WebApplication1
         }
 
         public IConfiguration Configuration { get; }
-
-
         public void ConfigureServices(IServiceCollection services)
         {
-
             string connection = Configuration.GetConnectionString("DefaultConnection");
-
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
-
             services.AddControllers();
-
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -40,9 +29,7 @@ namespace WebApplication1
                     .AllowAnyHeader());
             });
             services.AddControllersWithViews();
-
         }
-
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -54,25 +41,20 @@ namespace WebApplication1
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-
             });
-
-
         }
     }
 }
+

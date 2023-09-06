@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using WebApplication1.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -23,3 +26,14 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+var config = new ConfigurationBuilder()
+        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+        .AddEnvironmentVariables().Build();
+builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationContext>();
+    dbContext.Database.EnsureCreated();
+}
